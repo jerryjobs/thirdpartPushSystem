@@ -3,22 +3,16 @@
 <head>
     <meta charset="UTF-8">
     {% if title %}
-    <title>{{title}} - {{ version }}</title>
+    <title>{{ title }}</title>
     {% else %}
-    <title>第三方推送系统集合</title>
+    <title>多推送系统</title>
     {% endif %}
-
     <link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="https://bootswatch.com/cerulean/bootswatch.less" media="screen">
     <link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="https://bootswatch.com/cerulean/bootswatch.less">
 </head>
 <body>
-
-<h2>为解决多种手机终端推送时，使用单一推送到达率较低的问题。</h2>
-<h3>Current version is {{ version }}</h3>
-<form method="post">
-
-</form>
+{% block content %}{% endblock %}
 </body>
 </html>

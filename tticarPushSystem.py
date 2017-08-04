@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template as render
+from flask.ext.wtf import Form
 
 app = Flask(__name__)
 
@@ -13,7 +14,9 @@ def index():
         version='0.1'
     )
 
-
+@app.route('/push/info')
+def push_info():
+    return render('push_info.html')
 
 
 if __name__ == '__main__':
