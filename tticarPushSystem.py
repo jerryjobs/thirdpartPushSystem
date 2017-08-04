@@ -1,12 +1,20 @@
 from flask import Flask
+from flask import render_template as render
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
-    return u'Welcome to 天天爱车推送系统.'
+@app.route('/index')
+def index():
+    return render(
+        'index.html',
+        title='多推送系统',
+        version='0.1'
+    )
+
+
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
