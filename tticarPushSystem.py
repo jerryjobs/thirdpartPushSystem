@@ -20,4 +20,7 @@ def push_info():
 
 
 if __name__ == '__main__':
+    from push import getui
+    from push import mipush
+
     app.run(debug = True)

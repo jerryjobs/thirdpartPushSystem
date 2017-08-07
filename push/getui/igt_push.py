@@ -31,7 +31,7 @@ class IGeTui:
         if ssl is None and host is not None and host != '' and host.lower().startswith('https:'):
             ssl = True
 		
-        self.useSSL = (ssl if ssl is not None else False);
+        self.useSSL = (ssl if ssl is not None else False)
 		
         if host is None or len(host) <= 0:
             self.hosts = GtConfig.getDefaultDomainUrl(self.useSSL)
