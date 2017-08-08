@@ -11,7 +11,22 @@ __author__ = 'JieGuo'
 
 
 from flask_sqlalchemy import SQLAlchemy
+from flask_apscheduler import APScheduler
 import logging
+
+
+class Config(object):  
+    JOBS = [  
+            {  
+                'id'        : 'pushQueue',  
+                'func'      : 'tticarPushSystem:startPushQueue',  
+                'args'      : '',  
+                'trigger'   : 'interval',  
+                'seconds'   : 10  
+            }  
+    ]
+         
+    SCHEDULER_API_ENABLED = True
 
 def initAppConfig(app):
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/push_queue.db'
@@ -25,3 +40,10 @@ def initAppConfig(app):
 def initLogging(app):
     handler = logging.FileHandler("mylog", encoding='UTF-8')
     app.logger.addHandler(handler)
+
+
+def initSchedule(app):
+    scheduler = APScheduler()
+    app.config.from_object(Config())
+    scheduler.init_app(app)
+    return scheduler

@@ -4,6 +4,7 @@ from api.db_model import PushQueue
 import threading
 from datetime import datetime
 import logging
+from tticarPushSystem import app
 
 class PushThread(threading.Thread):
 
@@ -44,4 +45,23 @@ def loop(stepSeconds):
             
             pass
         #pt = PushThread()
-    pass
+    
+def startQueue():
+    result = PushQueue.query.filter('sendTime ISNULL') \
+    .order_by(PushQueue.id.desc()).offset(0).limit(9).all()
+    if len(result) == 0 :
+        return
+
+    if result :
+        for item in result:
+            item.sendTime = datetime.utcnow()
+            db.session.commit()
+
+def pushItem(id):
+    with app.app_context():
+        pq = PushQueue.query.filter_by(id=id).first()
+        if pq :
+            pq.sendTime = datetime.utcnow()
+            db.session.commit()
+        else:
+            print('push queue id is : ', id , 'can not pushed')
