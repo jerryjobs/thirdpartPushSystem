@@ -1,6 +1,7 @@
 __author__ = 'wei'
 
-from protobuf import *
+from ...protobuf import gt_req_pb2
+from ...protobuf.gt_req_pb2 import *
 import igt_base_template
 
 

@@ -50,25 +50,26 @@ this file*.
 
 __author__ = 'robinson@google.com (Will Robinson)'
 
-try:
-  from cStringIO import StringIO
-except ImportError:
-  from StringIO import StringIO
-import copy_reg
+# try:
+#   from cStringIO import StringIO
+# except ImportError:
+#   from StringIO import StringIO
+from io import StringIO
+#import copy_reg
 import struct
 import weakref
 
 # We use "as" to avoid name collisions with variables.
-from google.protobuf.internal import containers
-from google.protobuf.internal import decoder
-from google.protobuf.internal import encoder
-from google.protobuf.internal import enum_type_wrapper
-from google.protobuf.internal import message_listener as message_listener_mod
-from google.protobuf.internal import type_checkers
-from google.protobuf.internal import wire_format
-from google.protobuf import descriptor as descriptor_mod
-from google.protobuf import message as message_mod
-from google.protobuf import text_format
+from ..internal import containers
+from ..internal import decoder
+from ..internal import encoder
+from ..internal import enum_type_wrapper
+from ..internal import message_listener as message_listener_mod
+from ..internal import type_checkers
+from ..internal import wire_format
+from ...protobuf import descriptor as descriptor_mod
+from ...protobuf import message as message_mod
+from ...protobuf import text_format
 
 _FieldDescriptor = descriptor_mod.FieldDescriptor
 
@@ -99,7 +100,7 @@ def InitMessage(descriptor, cls):
   _AddStaticMethods(cls)
   _AddMessageMethods(descriptor, cls)
   _AddPrivateHelperMethods(cls)
-  copy_reg.pickle(cls, lambda obj: (cls, (), obj.__getstate__()))
+  #copy_reg.pickle(cls, lambda obj: (cls, (), obj.__getstate__()))
 
 
 # Stateless helpers for GeneratedProtocolMessageType below.
@@ -798,7 +799,7 @@ def _AddMergeFromStringMethod(message_descriptor, cls):
         raise message_mod.DecodeError('Unexpected end-group tag.')
     except IndexError:
       raise message_mod.DecodeError('Truncated message.')
-    except struct.error, e:
+    except struct.error as e:
       raise message_mod.DecodeError(e)
     return length   # Return this for legacy reasons.
   cls.MergeFromString = MergeFromString

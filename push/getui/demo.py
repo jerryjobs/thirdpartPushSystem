@@ -25,9 +25,9 @@ HOST = 'http://sdk.open.api.igexin.com/apiex.htm';
 #https的域名
 # HOST = 'https://api.getui.com/apiex.htm';
 
-APPKEY = ""
-APPID = ""
-MASTERSECRET = ""
+APPKEY = "EtNTKPQiYa7GOv10T6Awd6"
+APPID = "ZX7GLsMsicA2qlTqZHlG81"
+MASTERSECRET = "zXAbgylpNc80hq7NwlHiu3"
 CID = ""
 Alias = '请输入别名'
 DEVICETOKEN = ""

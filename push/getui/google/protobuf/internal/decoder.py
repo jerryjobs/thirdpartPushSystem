@@ -81,9 +81,10 @@ we repeatedly read a tag, look up the corresponding decoder, and invoke it.
 __author__ = 'kenton@google.com (Kenton Varda)'
 
 import struct
-from google.protobuf.internal import encoder
-from google.protobuf.internal import wire_format
-from google.protobuf import message
+from ..internal import encoder
+from ..internal import wire_format
+from ...protobuf import message
+
 
 
 # This will overflow and thus become IEEE-754 "infinity".  We would use

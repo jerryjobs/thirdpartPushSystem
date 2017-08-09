@@ -5,8 +5,8 @@ import time
 import urllib.request, urllib.parse, urllib.error
 import urllib.request, urllib.error, urllib.parse
 
-from base.APIError import APIError
-from base.APIHostSwitch import *
+from ..base.APIError import APIError
+from ..base.APIHostSwitch import *
 
 _MAX_BACKOFF_DELAY = 1024000
 

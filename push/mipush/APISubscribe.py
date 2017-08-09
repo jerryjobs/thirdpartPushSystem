@@ -1,7 +1,7 @@
 # coding=utf-8
-from base.APIConstants import Constants
-from base.APIError import APIError
-from base.APISenderBase import Base
+from .base.APIConstants import Constants
+from .base.APIError import APIError
+from .base.APISenderBase import Base
 
 __TARGET_SPLITTER__ = ","
 

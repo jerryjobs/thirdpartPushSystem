@@ -1,7 +1,7 @@
 # coding=utf-8
-from base.APIConstants import Constants
-from base.APIError import APIError
-from base.APISenderBase import Base
+from .base.APIConstants import Constants
+from .base.APIError import APIError
+from .base.APISenderBase import Base
 
 _BROADCAST_TOPIC_MAX = 5
 _TOPIC_SPLITTER = ';$;'

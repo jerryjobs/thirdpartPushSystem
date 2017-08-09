@@ -1,6 +1,6 @@
 # coding=utf-8
 from threading import Lock
-from base.APIConstants import Constants
+from ..base.APIConstants import Constants
 import random
 import time
 from functools import reduce

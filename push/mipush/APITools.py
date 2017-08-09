@@ -1,6 +1,6 @@
 # coding=utf-8
-from base.APIConstants import Constants
-from base.APISenderBase import Base
+from .base.APIConstants import Constants
+from .base.APISenderBase import Base
 import logging
 
 __REG_ID_SPLITTER__ = ","

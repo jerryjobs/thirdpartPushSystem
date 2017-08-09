@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import time
-from protobuf import *
-from payload.APNPayload import APNPayload, DictionaryAlertMsg
+from ...protobuf import *
+from ...protobuf import gt_req_pb2
+from ...payload.APNPayload import APNPayload, DictionaryAlertMsg
 
 
 class BaseTemplate:

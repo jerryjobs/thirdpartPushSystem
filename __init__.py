@@ -1,0 +1,1 @@
+packageInfo = 'MyApp for push'
