@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block css%}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<style type="text/css">
+.content{
+    width: 80%;
+    margin: 50px auto 0 auto;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h4>测试按照别名推送</h4>
+    <form method="POST" action="/tools">
+        {% if error_message %}
+        <p>{{ error_message }}</p>
+        {% endif %}
+    <table class="table table-bordered">
+        <tr>
+            <td class="text-center" width="100">推送标题：</td>
+            <td><label><input type="text" placeholder="请输入标题..." name="title"/></label></td>
+        </tr>
+        <tr>
+            <td class="text-center">别名：</td>
+            <td>
+                <label>
+                    <input type="text" placeholder="请输入发送目标的别名...." name="alias"/>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">内容：</td>
+            <td>
+                <textarea rows="3" name="content" placeholder="请输入推送内容"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">推送服务：</td>
+            <td>
+                <label>
+                    <select name="pushType">
+                        <option value="mi">小米</option>
+                    </select>
+                </label>
+
+                <button class="btn btn-large btn-primary" type="submit" style="margin-left:40px;">发送</button>
+            </td>
+        </tr>
+    </table>
+    </form>
+    
+</div>
+{% endblock %}

@@ -5,6 +5,10 @@ import threading
 from datetime import datetime
 import logging
 from tticarPushSystem import app
+from ..tticarPushSystem import getPushList
+from push.push_config import MiPush
+
+miPushService = MiPush()
 
 class PushThread(threading.Thread):
 
@@ -47,21 +51,17 @@ def loop(stepSeconds):
         #pt = PushThread()
     
 def startQueue():
-    result = PushQueue.query.filter('sendTime ISNULL') \
-    .order_by(PushQueue.id.desc()).offset(0).limit(9).all()
+    result = getPushList()
     if len(result) == 0 :
         return
 
     if result :
         for item in result:
-            item.sendTime = datetime.utcnow()
-            db.session.commit()
-
-def pushItem(id):
-    with app.app_context():
-        pq = PushQueue.query.filter_by(id=id).first()
-        if pq :
-            pq.sendTime = datetime.utcnow()
-            db.session.commit()
-        else:
-            print('push queue id is : ', id , 'can not pushed')
+            pass
+            #pushOneItem(item)
+            # try :
+            #     item.sendTime = datetime.utcnow()
+            #     miPushService.sendNotifycation(item)
+            #     db.session.commit()
+            # except Exception as e:
+            #     print(e)

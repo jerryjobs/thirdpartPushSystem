@@ -42,7 +42,8 @@ class PushQueue(db.Model):
         self.isArrive = False
         
     def __repr__(self):
-        return "<PushQueue(id='%s', title='%s', content='%s', createTime='%s', sendTime='%s', isArrive='%s'>" % (self.id, self.title, self.content, self.createTime, self.sendTime, self.isArrive)
+        return "<PushQueue(id='%s', alias='%s' title='%s', content='%s', createTime='%s', sendTime='%s', isArrive='%s'>" % \
+        (self.id, self.target, self.title, self.content, self.createTime, self.sendTime, self.isArrive)
 
 
 def save(obj):

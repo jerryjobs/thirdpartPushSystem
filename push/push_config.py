@@ -107,18 +107,19 @@ class MiPush():
         """
         发送一个通知    参数为一条 消息实体
         """
-        
+        Constants.use_official()
         message = PushMessage() \
             .restricted_package_name('push.jerry.cn.pushdispatcher') \
-            .title('这是一条测试消息') \
-            .description('这是一条测试消息') \
+            .title(pushItem.title) \
+            .description(pushItem.content) \
             .pass_through(0) \
-            .payload('payload') \
+            .payload(pushItem.content) \
             .notify_type(1) \
+            .time_to_live(60 * 60 * 24 * 1000) \
+            .extra({'name':'jerry'}) \
             .extra({Constants.extra_param_notify_effect: Constants.notify_launcher_activity})
-        recv = self.sender.send(message.message_dict(), 'jerry')
+        recv = self.sender.send_to_alias(message.message_dict(), 'jerry.jobs', 2)
         print (recv)
-        pass
 
 
 def testMiPush(pushItem=None):

@@ -19,7 +19,7 @@ class Config(object):
     JOBS = [  
             {  
                 'id'        : 'pushQueue',  
-                'func'      : 'tticarPushSystem:startPushQueue',  
+                'func'      : 'tticarPushSystem:getPushList',  
                 'args'      : '',  
                 'trigger'   : 'interval',  
                 'seconds'   : 10  
