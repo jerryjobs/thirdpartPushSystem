@@ -1,0 +1,22 @@
+
+# 目前实现了华为小米的单点推送
+
+小米支持alias和tag
+华为不支持 alias，也不支持tag
+所以化为的推送需要自己实现群推，而且一次不能超过100个ID
+华为的push id需要从客户端回传（服务器上没有alias所以这个得自己做到api里。）
+
+通过测试：
+华为推送（锁屏状态，杀死进程时，可收到推送）演示给杜磊看的
+小米推送（锁屏状态，杀死进程时，可收到推送）演示给闫豆看的
+其它推送可使用插件形势扩展，目前程序是用python脚本写的。现在只是基础功能，后期可以扩展。
+
+```
+(p3env)➜  huawei git:(master) ✗ python __init__.py
+hi this is the test
+{'expires_in': 604800, 'access_token': 'CFmb3eyKmlAkXQ7d8qJVW+dMdWfP+8Etir6Bo/s3ZH8gATvcKF7BhfeHalH13OA5QU2Lks7gzWzwfsH5Y7ANdg=='}
+CFmb3eyKmlAkXQ7d8qJVW+dMdWfP+8Etir6Bo/s3ZH8gATvcKF7BhfeHalH13OA5QU2Lks7gzWzwfsH5Y7ANdg==
+{'nsp_ts': 1502782316, 'nsp_svc': 'openpush.message.api.send', 'payload': '%7B%22hps%22%3A%7B%22msg%22%3A%7B%22type%22%3A3%2C%22body%22%3A%7B%22content%22%3A%22Push+message+content%22%2C%22title%22%3A%22Push+message+content%22%7D%2C%22action%22%3A%7B%22type%22%3A1%2C%22param%22%3A%7B%22intent%22%3A%22%23Intent%3Bcompo%3Dpush.jerry.cn.pushdispatcher%2F.MainActivity%3BS.W%3DU%3Bend%22%7D%7D%7D%2C%22ext%22%3A%7B%22biTag%22%3A%22Trump%22%2C%22customize%22%3A%5B%7B%22season%22%3A%22Spring%22%7D%2C%7B%22weather%22%3A%22raining%22%7D%5D%7D%7D', 'access_token': 'CFmb3eyKmlAkXQ7d8qJVW%2BdMdWfP%2B8Etir6Bo%2Fs3ZH8gATvcKF7BhfeHalH13OA5QU2Lks7gzWzwfsH5Y7ANdg%3D%3D', 'device_token_list': '%5B%220861012037486274300000742500CN01%22%5D'}
+200 {'Server': 'openresty', 'Cache-Control': 'no-store', 'Content-Type': 'text/plain; charset=UTF-8', 'Connection': 'keep-alive', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'Pragma': 'no-cache', 'Content-Encoding': 'gzip', 'Date': 'Tue, 15 Aug 2017 07:31:57 GMT', 'Transfer-Encoding': 'chunked'}
+{"requestId":"15027823179891204535","msg":"ok.","code":"80300002"}
+```
