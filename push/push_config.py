@@ -118,7 +118,7 @@ class MiPush():
             .time_to_live(60 * 60 * 24 * 1000) \
             .extra({'name':'jerry'}) \
             .extra({Constants.extra_param_notify_effect: Constants.notify_launcher_activity})
-        recv = self.sender.send_to_alias(message.message_dict(), 'jerry.jobs', 2)
+        recv = self.sender.send_to_alias(message.message_dict(), pushItem.target, 2)
         print (recv)
 
 
